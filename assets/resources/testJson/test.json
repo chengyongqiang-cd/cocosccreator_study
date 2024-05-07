@@ -1,0 +1,8 @@
+{
+    "name": "程永强",
+    "age": "18",
+    "hobby": {
+        "car": "BMW",
+        "computer": "Apple"
+    }
+}

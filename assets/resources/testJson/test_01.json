@@ -1,0 +1,8 @@
+{
+    "name": "闻锦",
+    "age": "19",
+    "hobby": {
+        "car": "Tesla",
+        "computer": "Apple"
+    }
+}
