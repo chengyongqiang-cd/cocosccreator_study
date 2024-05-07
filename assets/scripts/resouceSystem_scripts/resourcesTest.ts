@@ -24,7 +24,7 @@ export class resourcesTest extends Component {
     }
 
     update(deltaTime: number) {
-
+        this.testSprite.node.setPosition(0, 40 * deltaTime, 0)
     }
 
     //加载精灵图片
