@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, resources, Sprite, SpriteFrame, UITransform, Size, JsonAsset, Label, error } from 'cc';
+import { _decorator, Component, Node, resources, Sprite, SpriteFrame, UITransform, Size, JsonAsset, Label, error, TextAsset } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('resourcesTest')
@@ -9,10 +9,15 @@ export class resourcesTest extends Component {
     testJson: JsonAsset = null!
     @property({ type: Label })
     testLabel: Label = null!
+    @property({ type: TextAsset })
+    testText: TextAsset = null!
+    @property({ type: Label })
+    testTextLabel: Label = null!
 
     protected onLoad(): void {
         this.loadSprite()
         this.loadJson()
+        this.loadText()
     }
     start() {
 
@@ -31,7 +36,7 @@ export class resourcesTest extends Component {
         })
     }
     //加载json数据 0 通过组建绑定获取 1通过代码动态获取
-    loadJson() {
+    async loadJson() {
         let json_01_age
         //0
         const jsonData: object = this.testJson.json
@@ -39,7 +44,7 @@ export class resourcesTest extends Component {
         this.testLabel.string = jsonData['age'] + json_01_age
 
         //1
-        resources.load('testJson/test_01', JsonAsset, (err, jsonAsset) => {
+        await resources.load('testJson/test_01', JsonAsset, (err, jsonAsset) => {
             if (err) {
                 error(err.message)
                 return
@@ -47,6 +52,23 @@ export class resourcesTest extends Component {
             const jsonData_01: object = jsonAsset.json
             console.log(jsonData_01)
             json_01_age = jsonData_01['age']
+        })
+    }
+    //加载text数据 0 通过组建绑定获取 1通过代码动态获取
+    async loadText() {
+        let a
+        //0
+        const text: string = this.testText.text
+        this.testTextLabel.string = text + a
+
+        //1
+        await resources.load('testText/test_text_02', TextAsset, (err, textAsset) => {
+            if (err) {
+                error(err.message)
+                return
+            }
+            const text = textAsset.text
+            a = text
         })
     }
 }
