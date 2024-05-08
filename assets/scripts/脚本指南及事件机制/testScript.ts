@@ -1,7 +1,8 @@
 import { _decorator, Component, Node, Vec3, Label, Color, director, instantiate } from 'cc';
 import { Global } from './Global';
-const { ccclass, property } = _decorator;
+const { ccclass, property, executionOrder } = _decorator;
 
+@executionOrder(-1)
 @ccclass('testScript')
 export class testScript extends Component {
     @property({ type: Node })
@@ -67,7 +68,9 @@ export class testScript extends Component {
         const label = node.addComponent(Label)
         label.color = new Color('#000000')
         label.string = '新添加了一个节点'
-
+        this.scheduleOnce(() => {
+            node.getComponent(Label).destroy()
+        }, 1000)
         node.setPosition(2, 2, 0)
     }
 
