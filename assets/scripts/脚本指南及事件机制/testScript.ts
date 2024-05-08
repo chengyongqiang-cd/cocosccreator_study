@@ -12,5 +12,9 @@ export class testScript extends Component {
     update(deltaTime: number) {
         this.testNode.setPosition(new Vec3(0.0, 40.0 * deltaTime, 0.0));
     }
+
+    protected lateUpdate(dt: number): void {
+        this.testNode.setPosition(new Vec3(0.0, 200, 0.0));
+    }
 }
 
