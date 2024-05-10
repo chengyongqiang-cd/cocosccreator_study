@@ -2,8 +2,9 @@ import { _decorator, Component, Node, Vec3, Label, Color, director, instantiate 
 import { Global } from './Global';
 const { ccclass, property, executionOrder } = _decorator;
 
-@executionOrder(-1)
+
 @ccclass('testScript')
+@executionOrder(-1)
 export class testScript extends Component {
     @property({ type: Node })
     testNode: Node = null!
