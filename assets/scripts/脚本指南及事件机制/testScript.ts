@@ -83,7 +83,14 @@ export class testScript extends Component {
 
         setTimeout(() => {
             node.destroy()
+            // director.loadScene('testScenes')
         }, 5000)
+    }
+
+    //加载和切换场景
+
+    loadScenes() {
+
     }
 
 
