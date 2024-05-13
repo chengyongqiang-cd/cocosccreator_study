@@ -1,4 +1,4 @@
-import { _decorator, Component, EventKeyboard, EventTouch, Input, input, KeyCode, Node } from 'cc';
+import { _decorator, Component, EventKeyboard, EventTouch, Input, input, KeyCode, Node, Screen } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('testInput')
@@ -10,12 +10,19 @@ export class testInput extends Component {
 
         //注册重力感应事件
         // input.on(Input.EventType.DEVICEMOTION, this.deviceMotion, this)
+
+        //screen.on('orientation-change', this.onOrientationChange, this);
     }
 
     protected onDestroy(): void {
         // input.off(Input.EventType.TOUCH_START, this.touchStart, this)
         input.off(Input.EventType.KEY_DOWN, this.keyDown, this)
         // input.off(Input.EventType.DEVICEMOTION, this.deviceMotion, this)
+        //screen.off('orientation-change', this.onOrientationChange, this);
+    }
+
+    onOrientationChange() {
+
     }
     start() {
 
