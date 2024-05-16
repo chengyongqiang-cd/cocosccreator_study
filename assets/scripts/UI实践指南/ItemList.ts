@@ -22,6 +22,7 @@ export class ItemList extends Component {
     itemPrefab: Prefab | null = null;
 
     protected onLoad(): void {
+        //预制体加载具体数据
         for (let i = 0; i < this.items.length; i++) {
             const item = instantiate(this.itemPrefab)
             item.getComponent(UITransform).setContentSize(100, 100)
