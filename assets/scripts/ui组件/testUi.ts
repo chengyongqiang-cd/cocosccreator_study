@@ -1,4 +1,4 @@
-import { _decorator, Button, Component, Label, LabelOutline, Node, ProgressBar, Widget } from 'cc';
+import { _decorator, Button, Component, Label, LabelOutline, Node, ProgressBar, Toggle, Widget } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('testUi')
@@ -11,18 +11,23 @@ export class testUi extends Component {
     testProgress: ProgressBar = null!
     @property({ type: Node })
     testLabel: Node = null!
+    @property({ type: Toggle })
+    testToggle: Toggle = null
 
     private time: number = 0
 
     protected onLoad(): void {
         this.testButton.on(Button.EventType.CLICK, this.buttonClick, this)
+        this.testToggle.node.on('toggle', this.toggleCallback, this)
     }
 
     protected onDestroy(): void {
         this.testButton.off(Button.EventType.CLICK, this.buttonClick, this)
+        this.testToggle.node.off('toggle', this.toggleCallback, this)
     }
     start() {
         this.setWightCom()
+
     }
 
     update(deltaTime: number) {
@@ -53,8 +58,10 @@ export class testUi extends Component {
     }
 
 
-
-
-
+    toggleCallback(toggle: Toggle) {
+        if (toggle.isChecked = true) {
+            console.log('点击复选框了')
+        }
+    }
 }
 
